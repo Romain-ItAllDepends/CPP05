@@ -1,4 +1,4 @@
-NAME=flemme
+NAME=bureaucrat
 
 MY_SOURCES= main.cpp \
 			Bureaucrat.cpp \

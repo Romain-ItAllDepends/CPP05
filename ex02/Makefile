@@ -1,7 +1,11 @@
 NAME=bureaucrat
 
 MY_SOURCES= main.cpp \
-			Bureaucrat.cpp
+			Bureaucrat.cpp \
+			AForm.cpp \
+			PresidentialPardonForm.cpp \
+			RobotomyRequestForm.cpp \
+			ShrubberyCreationForm.cpp
 
 red='\033[0;31m'
 green='\033[0;32m'

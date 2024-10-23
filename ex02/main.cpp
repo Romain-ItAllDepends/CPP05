@@ -6,16 +6,19 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:02:45 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 09:46:18 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/10/23 16:00:46 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int	main(void) {
 	Bureaucrat	obj("SIUUUUUUUUUUUUUUU");
-	Form		form("PER");
+	PresidentialPardonForm		form("PER");
 
 	try {
 		std::cout << obj << std::endl;
@@ -30,10 +33,10 @@ int	main(void) {
 		form.beSigned(obj);
 		std::cout << "Signed ? " << form.getSigned() << std::endl;
 		obj.signForm(form);
-	} catch (const Form::GradeTooHighException& e) {
-		std::cerr << e.what() << std::endl;
-	} catch (const Form::GradeTooLowException& e) {
-		std::cerr << e.what() << std::endl;
+	// } catch (const Form::GradeTooHighException& e) {
+	// 	std::cerr << e.what() << std::endl;
+	// } catch (const Form::GradeTooLowException& e) {
+	// 	std::cerr << e.what() << std::endl;
 	} catch (const Bureaucrat::GradeTooHighException& e) {
 		std::cerr << e.what() << std::endl;
 	} catch (const Bureaucrat::GradeTooLowException& e) {

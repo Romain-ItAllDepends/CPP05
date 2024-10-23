@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 09:25:58 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 09:47:12 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/10/23 15:57:17 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	Bureaucrat::decrementGrade(void) {
 	_grade--;
 }
 
-void	Bureaucrat::signForm(const Form f) {
+void	Bureaucrat::signForm(const AForm f) {
 	if (f.getSigned())
 		std::cout << _name << " signed " << f.getName() << std::endl;
 	else if (f.getSigned() == 0)
