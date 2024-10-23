@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:41 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 14:04:54 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/10/23 17:05:26 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ class ShrubberyCreationForm: public AForm {
 	public:
 		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(const std::string name);
+		ShrubberyCreationForm(const std::string name, const bool sign, const int gradeSign, const int gradeExec);
 		ShrubberyCreationForm(const ShrubberyCreationForm &obj);
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &obj);
 		~ShrubberyCreationForm(void);
+
+		void	beSigned(const Bureaucrat &p);
 };
 
 std::ostream &operator<<(std::ostream& out, const ShrubberyCreationForm& a);

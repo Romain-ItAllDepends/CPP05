@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:30 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 14:04:29 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/10/23 16:14:43 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class PresidentialPardonForm: public AForm {
 		PresidentialPardonForm(const PresidentialPardonForm &obj);
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &obj);
 		~PresidentialPardonForm(void);
+
+		void	beSigned(const Bureaucrat &p);
 };
 
 std::ostream &operator<<(std::ostream& out, const PresidentialPardonForm& a);

@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:33 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 15:51:53 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/10/23 16:56:10 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ RobotomyRequestForm::~RobotomyRequestForm(void) {
 	std::cout << "The RobotomyRequestForm " << this->getName() << " has been destroyed!" << std::endl;
 }
 
-const char* RobotomyRequestForm::GradeTooHighException::what() const throw() {
-	return ("Too high grade but I don't even know how you can get this shitty error.");
-}
-
-const char* RobotomyRequestForm::GradeTooLowException::what() const throw() {
-	return ("Too low level to sign or execute the RobotomyRequestForm.");
+void	RobotomyRequestForm::beSigned(const Bureaucrat &p) {
+	if (this->getSigned() == false && p.getGrade() <= this->getGradeSign())
+		this->setSigned(true);
+	else if (p.getGrade() > this->getSigned())
+		throw AForm::GradeTooLowException();
 }
 
 std::ostream &operator<<(std::ostream& out, const RobotomyRequestForm& a) {

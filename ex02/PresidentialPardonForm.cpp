@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:26 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 15:38:03 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/10/23 16:21:24 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,11 @@ PresidentialPardonForm::~PresidentialPardonForm(void) {
 	std::cout << "The PresidentialPardonForm " << this->getName() << " has been destroyed!" << std::endl;
 }
 
-void	AForm::beSigned(const Bureaucrat &p) {
-	if (_signed == false && p.getGrade() <= _gradeSign)
-		_signed = true;
-	else if (p.getGrade() > _gradeSign)
+void	PresidentialPardonForm::beSigned(const Bureaucrat &p) {
+	if (this->getSigned() == false && p.getGrade() <= this->getGradeSign())
+		this->setSigned(true);
+	else if (p.getGrade() > this->getSigned())
 		throw AForm::GradeTooLowException();
-}
-
-const char* PresidentialPardonForm::GradeTooHighException::what() const throw() {
-	return ("Too high grade but I don't even know how you can get this shitty error.");
-}
-
-const char* PresidentialPardonForm::GradeTooLowException::what() const throw() {
-	return ("Too low level to sign or execute the PresidentialPardonForm.");
 }
 
 std::ostream &operator<<(std::ostream& out, const PresidentialPardonForm& a) {

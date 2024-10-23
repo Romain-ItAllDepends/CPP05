@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 09:25:58 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 15:57:17 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/10/23 17:36:41 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ Bureaucrat::Bureaucrat(void):_name("L'idiot du village"), _grade(150) {
 
 Bureaucrat::Bureaucrat(const std::string name):_name(name), _grade(150) {
 	std::cout << "Recruitment of a new Bureaucrat named " << _name << "." << std::endl;
+}
+
+Bureaucrat::Bureaucrat(const std::string name, const int grade):_name(name), _grade(grade) {
+	std::cout << "Recruitment of a new custom Bureaucrat named " << _name << "." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj):_name(obj._name), _grade(obj._grade) {
@@ -64,11 +68,18 @@ void	Bureaucrat::decrementGrade(void) {
 	_grade--;
 }
 
-void	Bureaucrat::signForm(const AForm f) {
+void	Bureaucrat::signForm(const AForm &f) {
 	if (f.getSigned())
 		std::cout << _name << " signed " << f.getName() << std::endl;
 	else if (f.getSigned() == 0)
 		std::cout << _name << " couldn’t sign " << f.getName() << " because " << "<reason>" << "." << std::endl;
+}
+
+void	Bureaucrat::executeForm(AForm const & form) {
+	if (form.getSigned() && form.getGradeExecutive() >= this->getGrade())
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	else if (form.getSigned() == 0 || form.getGradeExecutive() <= this->getGrade())
+		std::cout << _name << " couldn’t execute " << form.getName() << " because " << " too low level" << "." << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {

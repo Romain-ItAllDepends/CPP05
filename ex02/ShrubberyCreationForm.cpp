@@ -6,11 +6,17 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:38 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 15:55:07 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/10/23 17:08:24 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string name, const bool sign, const int gradeSign, const int gradeExec):AForm(name, sign, gradeSign, gradeExec) {
+	
+}
+
+
 
 ShrubberyCreationForm::ShrubberyCreationForm(void):AForm("random", false, 145, 137) {
 	std::cout << "The standart ShrubberyCreationForm " << this->getName() << " has been created!" << std::endl;
@@ -37,12 +43,11 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 	std::cout << "The ShrubberyCreationForm " << this->getName() << " has been destroyed!" << std::endl;
 }
 
-const char* ShrubberyCreationForm::GradeTooHighException::what() const throw() {
-	return ("Too high grade but I don't even know how you can get this shitty error.");
-}
-
-const char* ShrubberyCreationForm::GradeTooLowException::what() const throw() {
-	return ("Too low level to sign or execute the ShrubberyCreationForm.");
+void	ShrubberyCreationForm::beSigned(const Bureaucrat &p) {
+	if (this->getSigned() == false && p.getGrade() <= this->getGradeSign())
+		this->setSigned(true);
+	else if (p.getGrade() > this->getSigned())
+		throw AForm::GradeTooLowException();
 }
 
 std::ostream &operator<<(std::ostream& out, const ShrubberyCreationForm& a) {
