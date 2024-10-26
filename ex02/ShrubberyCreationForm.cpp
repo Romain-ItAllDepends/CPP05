@@ -6,14 +6,52 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:38 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 17:08:24 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/10/26 19:06:06 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include <iosbase>
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string name, const bool sign, const int gradeSign, const int gradeExec):AForm(name, sign, gradeSign, gradeExec) {
-	
+std::ofstream	outfile;
+outfile.open(name + "_shrubbery".c_str(), ios_base::in);
+outfile << "                        .__ ._       \\_. " << std::endl;
+outfile << "                 _, _.  '  \\/   \\.-  /" << std::endl;
+outfile << "                  \\/     .-_`   // |/     \\," << std::endl;
+outfile << "                   \\.   '   \\`. ||  \\.-'  /" << std::endl;
+outfile << "                  .-.`-(   _/\\ V/ \\//,-' >-'   ._," << std::endl;
+outfile << "              .__/   `. \\.   ' J   ) ./  / __._/" << std::endl;
+outfile << "        \\,      '   _/ \\  \\  | |  / /  .'-'.-' `._," << std::endl;
+outfile << "   \\_.--.| \\_.      ' .___ `\\: | / .--'.-'\"     \\" << std::endl;
+outfile << "    /    \\/        ._/`-.`  \\ .'.' .'---./__   '" << std::endl;
+outfile << "          \\_. '   .---.  \\     /  /  ,   `  `" << std::endl;
+outfile << "           `-.`__.'     `- \\  /   / _/-.---.__.- ." << std::endl;
+outfile << "     >--.-\"\"'____.--\"`_     '   /.'..' \\   \\   _/`" << std::endl;
+outfile << "        / .-|(    x_.-'___  |   :' /    _..---_' " << std::endl;
+outfile << "       /.\' /`-`._  `-,'   ` \'   I '_.--'__--..___.--._.-" << std::endl;
+outfile << "   _.-\'      _.____./ .-.--\"\"-. .-\"    ' _..-.---'   \\" << std::endl;
+outfile << "       /   .---'-//.___. .-'       \\__ .--.  `    `.   '`-" << std::endl;
+outfile << "   ` _/    _//     ./   _..   .'  `.    \\ \\    |_." << std::endl;
+outfile << "          '    _..'  `.' . `.       )    | |\\  `" << std::endl;
+outfile << "     \\_..  .--'    ,\\ \\_/`  :    )  (`-. `.|`\\" << std::endl;
+outfile << "   ._/ `\\'.--.,-((  `.`.__ |   _/   \\    |)  `--._/`" << std::endl;
+outfile << "        //'  //  _)   )/-._`.  (,-')  )  / \\_.    /\\." << std::endl;
+outfile << "   .__./    //  '\\  |//    `.\\ '\\ (  (  <`   ._  '" << std::endl;
+outfile << "     /   ..-\\ _    _/ \\_.  \\ `\\    \\_ `---.-'__" << std::endl;
+outfile << "         /   `   _/|       J  /`     `-,,-----.`-." << std::endl;
+outfile << "        '`      '          < `   f  I //        `\\_," << std::endl;
+outfile << "                           J        I/\\_.        ./" << std::endl;
+outfile << "                           I  .:    K  `          `" << std::endl;
+outfile << "                          J         L" << std::endl;
+outfile << "                          F  .-'    J" << std::endl;
+outfile << "                          I  (.   . I _.-.._" << std::endl;
+outfile << "                  _.---.J/      :'   L -'" << std::endl;
+outfile << "                     _.-'_.)     ` `-.`---.,_." << std::endl;
+outfile << "                .--""   .F' J) `.`L.__`-.___" << std::endl;
+outfile << "                       Y ..Z     ))   `--'  `-" << std::endl;
+outfile << "                         . /'    :/'" << std::endl;
 }
 
 
