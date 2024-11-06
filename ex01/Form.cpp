@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:48:37 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 09:12:34 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/06 15:32:00 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	Form::getGradeExecutive(void) const {
 Form	Form::beSigned(const Bureaucrat &p) {
 	if (_signed == 0 && p.getGrade() <= _gradeSign)
 		_signed = 1;
+	else if (_signed == 1)
+		std::cout << "Already signed." << std::endl;
 	else if (p.getGrade() > _gradeSign)
 		throw Form::GradeTooLowException();
 	return (*this);

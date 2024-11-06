@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 09:25:58 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/22 15:09:00 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/06 13:38:26 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ void	Bureaucrat::setGrade(int grade) {
 }
 
 void	Bureaucrat::incrementGrade(void) {
-	if (_grade == 150)
+	if (_grade == 1)
 		throw GradeTooHighException();
-	_grade++;
+	_grade--;
 }
 
 void	Bureaucrat::decrementGrade(void) {
-	if (_grade == 1)
+	if (_grade == 150)
 		throw GradeTooLowException();
-	_grade--;
+	_grade++;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {

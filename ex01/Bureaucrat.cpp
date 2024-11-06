@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 09:25:58 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 09:47:12 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/06 14:32:49 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,24 @@ void	Bureaucrat::setGrade(int grade) {
 }
 
 void	Bureaucrat::incrementGrade(void) {
-	if (_grade == 150)
-		throw GradeTooHighException();
-	_grade++;
-}
-
-void	Bureaucrat::decrementGrade(void) {
 	if (_grade == 1)
-		throw GradeTooLowException();
+		throw GradeTooHighException();
 	_grade--;
 }
 
+void	Bureaucrat::decrementGrade(void) {
+	if (_grade == 150)
+		throw GradeTooLowException();
+	_grade++;
+}
+
 void	Bureaucrat::signForm(const Form f) {
-	if (f.getSigned())
+	if (f.getSigned() == 0 && f.getGradeSign() >= _grade)
 		std::cout << _name << " signed " << f.getName() << std::endl;
-	else if (f.getSigned() == 0)
-		std::cout << _name << " couldn’t sign " << f.getName() << " because " << "<reason>" << "." << std::endl;
+	else if (f.getSigned() == 0 && f.getGradeSign() < _grade)
+		std::cout << _name << " couldn't sign " << f.getName() << " because too low grade." << std::endl;
+	else
+		std::cout << _name << " couldn't sign " << f.getName() << " because already signed." << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {

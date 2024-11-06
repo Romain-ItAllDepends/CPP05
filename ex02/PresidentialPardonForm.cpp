@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:26 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 16:21:24 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/06 10:41:13 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ PresidentialPardonForm::PresidentialPardonForm(void):AForm("random", false, 25, 
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string name):AForm(name, false, 25, 5) {
 	std::cout << "The PresidentialPardonForm " << this->getName() << " has been created!" << std::endl;
+	std::cout << name << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj):AForm(obj.getName(),
