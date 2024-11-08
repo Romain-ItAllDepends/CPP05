@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 09:25:58 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 15:25:55 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/08 15:56:46 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	Bureaucrat::signForm(const AForm &f) {
 
 void	Bureaucrat::executeForm(AForm const & form) {
 	if (form.getSigned() && form.getGradeExecutive() >= this->getGrade())
-		std::cout << _name << " executed " << form.getName() << std::endl;
+		form.executeFormIn(*this);
 	else if (form.getSigned() == 0)
 		std::cout << _name << " couldn’t execute " << form.getName() << " because " << "the form is not signed" << "." << std::endl;
 	else if (form.getGradeExecutive() < this->getGrade())

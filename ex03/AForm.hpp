@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                           :+:      :+:    :+:   */
+/*   AAForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:48:42 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/26 15:52:40 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/10/23 10:51:04 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ class AForm {
 
 		virtual void		beSigned(const Bureaucrat &p) = 0;
 		void				execute(Bureaucrat const & executor) const;
+
+		virtual void		executeFormIn(const Bureaucrat worker) const = 0;
 
 		class GradeTooHighException: public std::exception {
 			public:

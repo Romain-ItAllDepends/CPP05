@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:26 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/06 10:41:13 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/08 16:00:23 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ PresidentialPardonForm::PresidentialPardonForm(void):AForm("random", false, 25, 
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string name):AForm(name, false, 25, 5) {
 	std::cout << "The PresidentialPardonForm " << this->getName() << " has been created!" << std::endl;
-	std::cout << name << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj):AForm(obj.getName(),
@@ -43,6 +42,11 @@ void	PresidentialPardonForm::beSigned(const Bureaucrat &p) {
 		this->setSigned(true);
 	else if (p.getGrade() > this->getSigned())
 		throw AForm::GradeTooLowException();
+}
+
+void	PresidentialPardonForm::executeFormIn(const Bureaucrat worker) {
+	std::cout << worker.getName() << " executed " << this->getName() << std::endl;
+	std::cout << this->getName() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 std::ostream &operator<<(std::ostream& out, const PresidentialPardonForm& a) {
