@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 09:25:58 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/06 13:51:55 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/08 11:36:19 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,21 @@ void	Bureaucrat::decrementGrade(void) {
 }
 
 void	Bureaucrat::signForm(const AForm &f) {
-	if (f.getSigned())
+	if (f.getSigned() == 0 && f.getGradeSign() >= _grade)
 		std::cout << _name << " signed " << f.getName() << std::endl;
-	else if (f.getSigned() == 0)
-		std::cout << _name << " couldn’t sign " << f.getName() << " because " << "<reason>" << "." << std::endl;
+	else if (f.getSigned() == 0 && f.getGradeSign() < _grade)
+		std::cout << _name << " couldn't sign " << f.getName() << " because too low grade." << std::endl;
+	else
+		std::cout << _name << " couldn't sign " << f.getName() << " because already signed." << std::endl;
 }
 
 void	Bureaucrat::executeForm(AForm const & form) {
 	if (form.getSigned() && form.getGradeExecutive() >= this->getGrade())
 		std::cout << _name << " executed " << form.getName() << std::endl;
-	else if (form.getSigned() == 0 || form.getGradeExecutive() <= this->getGrade())
-		std::cout << _name << " couldn’t execute " << form.getName() << " because " << " too low level" << "." << std::endl;
+	else if (form.getSigned() == 0)
+		std::cout << _name << " couldn’t execute " << form.getName() << " because " << "the form is not signed" << "." << std::endl;
+	else if (form.getGradeExecutive() < this->getGrade())
+		std::cout << _name << " couldn’t execute " << form.getName() << " because " << "too low level" << "." << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {

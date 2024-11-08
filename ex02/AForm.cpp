@@ -65,17 +65,23 @@ void	AForm::setSigned(const bool sign) {
 void	AForm::beSigned(const Bureaucrat &p) {
 	if (_signed == 0 && p.getGrade() <= _gradeSign)
 		_signed = 1;
+	else if (_signed == 1)
+		std::cout << "Already signed." << std::endl;
 	else if (p.getGrade() > _gradeSign)
 		throw AForm::GradeTooLowException();
 }
 
 void	AForm::execute(Bureaucrat const & executor) const {
-	if (_signed == true && executor.getGrade() < _gradeExecutive)
+	if (executor.getGrade() > _gradeExecutive)
 		throw AForm::GradeTooLowException();
+	else if (_signed == false)
+		std::cout << "Form is not signed!" << std::endl;
+	else
+		std::cout << "The Form " << _name << " has been execute!" << std::endl;
 }
 
 const char* AForm::GradeTooHighException::what() const throw() {
-	return ("Too high grade but I don't even know how you can get this shitty error.");
+	return ("Too high grade but this error can't be trigger.");
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {

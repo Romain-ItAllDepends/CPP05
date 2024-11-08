@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:11:08 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/26 17:14:31 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/08 08:52:01 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ AForm	*Intern::makeForm(std::string name, std::string target) {
 	std::string	types[3];
 
 	i = 0;
-	types[0] = "Presidential pardon";
-	types[1] = "Robotomy request";
-	types[2] = "Shrubbery creation";
+	types[0] = "presidential pardon";
+	types[1] = "robotomy request";
+	types[2] = "shrubbery creation";
 	while (i < 4 && types[i] != name)
 		i++;
 	switch (i) {

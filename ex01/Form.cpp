@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:48:37 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/06 15:32:00 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/08 10:42:13 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ int	Form::getGradeExecutive(void) const {
 	return (_gradeExecutive);
 }
 
+void	Form::setSigned(const bool sign) {
+	_signed = sign;
+}
+
 Form	Form::beSigned(const Bureaucrat &p) {
 	if (_signed == 0 && p.getGrade() <= _gradeSign)
 		_signed = 1;
@@ -63,7 +67,7 @@ Form	Form::beSigned(const Bureaucrat &p) {
 }
 
 const char* Form::GradeTooHighException::what() const throw() {
-	return ("Too high grade but I don't even know how you can get this shitty error.");
+	return ("Too high grade but this error can't be trigger.");
 }
 
 const char* Form::GradeTooLowException::what() const throw() {

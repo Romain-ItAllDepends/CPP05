@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:02:45 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/06 13:56:18 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/08 11:43:09 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,47 @@ int	main(void) {
 	Intern						jack;
 
 	try {
-		std::cout << obj << std::endl;
-		obj.setGrade(150);
-		obj.decrementGrade();
-		// obj.setGrade(1);
-		// obj.incrementGrade();
-		std::cout << obj << std::endl;
+		// Each test is comment to avoid the previous test to change the current test
+
+		// std::cout << obj << std::endl;
+		// obj.setGrade(150);
+		// obj.decrementGrade();
+		// // obj.setGrade(1);
+		// // obj.incrementGrade();
+		// std::cout << obj << std::endl;
 		std::cout << "________________________\n" << std::endl;
-		std::cout << form << std::endl;
+		// std::cout << form << std::endl;
 		// obj.signForm(form);
-		// obj.signForm(formR);
-		// obj.signForm(formS);
-		p.beSigned(obj);
-		std::cout << "Signed ? " << form.getSigned() << std::endl;
-		obj.signForm(p);
+		// form.beSigned(obj);
+		// form.beSigned(obj);
+		// obj.signForm(form);
+		// std::cout << "Signed ? " << form.getSigned() << std::endl;
+		// form.setSigned(0);
+		// obj.setGrade(150);
+		// std::cout << "Signed ? " << form.getSigned() << std::endl;
+		// form.beSigned(obj);
+		// std::cout << "Signed ? " << form.getSigned() << std::endl;
+		// obj.signForm(form); // set gradeSign lower than 150 for this test
+		// form.beSigned(obj);
+		// std::cout << "Signed ? " << form.getSigned() << std::endl;
 		std::cout << "________________________\n" << std::endl;
-		// std::cout << p << std::endl;
+		// std::cout << p << std::endl; // Custom ShrubberyCreationForm
 		// std::cout << b << std::endl;
+		// p.beSigned(b);
 		// b.executeForm(p);
-		// p.execute(b);
-		// b.executeForm(form);
-		// form.execute(b);
+		// b.setGrade(150);
+		// std::cout << b << std::endl;
+		// b.executeForm(form); // Form not signed is ok
+		// b.executeForm(p); // Form signed but too low grade
+		// // p.execute(b); // Too low level catch
+		// b.setGrade(1);
+		// form.execute(b); // Not signed
 		std::cout << "________________________\n" << std::endl;
-		std::cout << jack.makeForm("Robotomy requst", "Jack") << std::endl;
+		std::cout << jack.makeForm("robotomy request", "Jack") << std::endl;
+		std::cout << jack.makeForm("shrubbery creation", "Jean") << std::endl;
+		std::cout << jack.makeForm("presidential pardon", "Jacko") << std::endl;
+		std::cout << jack.makeForm("robotomy reques", "Raté") << std::endl;
+		std::cout << "________________________\n" << std::endl;
 	} catch (const AForm::GradeTooHighException& e) {
 		std::cerr << e.what() << std::endl;
 	} catch (const AForm::GradeTooLowException& e) {

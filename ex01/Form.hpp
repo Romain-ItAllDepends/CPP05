@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:48:42 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/23 09:33:14 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/08 09:14:29 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ class Form {
 
 		const std::string	getName(void) const;
 		bool				getSigned(void) const;
-		int			getGradeSign(void) const;
-		int			getGradeExecutive(void) const;
+		int					getGradeSign(void) const;
+		int					getGradeExecutive(void) const;
+
+		void	setSigned(const bool sign);
 
 		Form	beSigned(const Bureaucrat &p);
 
