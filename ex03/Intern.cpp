@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:11:08 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 08:52:01 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/08 15:26:36 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ AForm	*Intern::makeForm(std::string name, std::string target) {
 		case ShrubberyCreation:
 			std::cout << "Intern creates" << target << std::endl;
 			return (new ShrubberyCreationForm(target));
+		default:
+			std::cerr << "Doesn't exist." << std::endl;
 	}
-	std::cerr << "Doesn't exist." << std::endl;
 	return (NULL);
 }

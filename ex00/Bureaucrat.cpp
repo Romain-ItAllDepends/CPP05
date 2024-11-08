@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 09:25:58 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/06 13:38:26 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/08 15:25:30 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	Bureaucrat::getGrade(void) const {
 
 void	Bureaucrat::setGrade(int grade) {
 	if (grade > 150)
-		throw GradeTooHighException();
-	if (grade < 1)
 		throw GradeTooLowException();
+	if (grade < 1)
+		throw GradeTooHighException();
 	_grade = grade;
 }
 
