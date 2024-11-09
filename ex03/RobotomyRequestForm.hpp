@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:36 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 15:49:04 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/09 08:46:16 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class RobotomyRequestForm: public AForm {
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &obj);
 		~RobotomyRequestForm(void);
 
-		void	executeFormIn(const Bureaucrat worker);
+		void	executeFormIn(const Bureaucrat worker) const;
 
 		void	beSigned(const Bureaucrat &p);
 };

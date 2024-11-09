@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:41 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 15:49:34 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/09 08:46:33 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class ShrubberyCreationForm: public AForm {
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &obj);
 		~ShrubberyCreationForm(void);
 
-		void	executeFormIn(const Bureaucrat worker);
+		void	executeFormIn(const Bureaucrat worker) const;
 
 		void	beSigned(const Bureaucrat &p);
 };

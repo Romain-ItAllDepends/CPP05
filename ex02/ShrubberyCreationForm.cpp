@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:38 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 16:00:38 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/09 08:46:29 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ShrubberyCreationForm::beSigned(const Bureaucrat &p) {
 		throw AForm::GradeTooLowException();
 }
 
-void	ShrubberyCreationForm::executeFormIn(const Bureaucrat worker) {
+void	ShrubberyCreationForm::executeFormIn(const Bureaucrat worker) const {
 	std::ofstream	outfile;
 	std::string		name = this->getName();
 

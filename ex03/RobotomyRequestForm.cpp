@@ -6,11 +6,13 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:33 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 16:00:32 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/09 08:48:54 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 RobotomyRequestForm::RobotomyRequestForm(void):AForm("random", false, 72, 45) {
 	std::cout << "The standart RobotomyRequestForm " << this->getName() << " has been created!" << std::endl;
@@ -18,15 +20,6 @@ RobotomyRequestForm::RobotomyRequestForm(void):AForm("random", false, 72, 45) {
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string name):AForm(name, false, 72, 45) {
 	std::cout << "The RobotomyRequestForm " << this->getName() << " has been created!" << std::endl;
-}
-
-void	RobotomyRequestForm::executeFormIn(const Bureaucrat worker) {
-	std::cout << worker.getName() << " executed " << this->getName() << std::endl;
-	std::cout << "Vrrrrrrrrrrrrrrrrrrrrr!" << std::endl;
-	if (std::rand() % 2)
-		std::cout << this->getName() <<  " has been robotomized." << std::endl;
-	else
-		std::cout << "Robotomy failed." << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj):AForm(obj.getName(),
@@ -51,6 +44,16 @@ void	RobotomyRequestForm::beSigned(const Bureaucrat &p) {
 		this->setSigned(true);
 	else if (p.getGrade() > this->getSigned())
 		throw AForm::GradeTooLowException();
+}
+
+void	RobotomyRequestForm::executeFormIn(const Bureaucrat worker) const {
+	std::cout << worker.getName() << " executed " << this->getName() << std::endl;
+	std::cout << "Vrrrrrrrrrrrrrrrrrrrrr!" << std::endl;
+	srand (time(NULL));	
+	if (rand() % 2)
+		std::cout << this->getName() <<  " has been robotomized." << std::endl;
+	else
+		std::cout << "Robotomy failed." << std::endl;
 }
 
 std::ostream &operator<<(std::ostream& out, const RobotomyRequestForm& a) {

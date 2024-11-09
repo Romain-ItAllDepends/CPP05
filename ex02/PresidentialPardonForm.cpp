@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:26 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 16:00:23 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/09 08:45:51 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	PresidentialPardonForm::beSigned(const Bureaucrat &p) {
 		throw AForm::GradeTooLowException();
 }
 
-void	PresidentialPardonForm::executeFormIn(const Bureaucrat worker) {
+void	PresidentialPardonForm::executeFormIn(const Bureaucrat worker) const {
 	std::cout << worker.getName() << " executed " << this->getName() << std::endl;
 	std::cout << this->getName() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

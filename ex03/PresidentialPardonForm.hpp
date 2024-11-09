@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:30 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 15:53:56 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/09 08:45:44 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class PresidentialPardonForm: public AForm {
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &obj);
 		~PresidentialPardonForm(void);
 
-		void	executeFormIn(const Bureaucrat worker);
+		void	executeFormIn(const Bureaucrat worker) const;
 
 		void	beSigned(const Bureaucrat &p);
 };

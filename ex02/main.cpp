@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:02:45 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 11:34:48 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/09 09:00:02 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,11 @@ int	main(void) {
 		b.executeForm(p); // Form signed but too low grade
 		// p.execute(b); // Too low level catch
 		b.setGrade(1);
+		formR.beSigned(b);
+		b.executeForm(formR); // ROB (robotomy)
 		form.execute(b); // Not signed
+		form.beSigned(b); // PER (president)
+		b.executeForm(form);
 		std::cout << "________________________\n" << std::endl;
 	} catch (const AForm::GradeTooHighException& e) {
 		std::cerr << e.what() << std::endl;
