@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:02:45 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/09 09:01:10 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/09 10:15:39 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ int	main(void) {
 		// form.beSigned(b); // PER (president)
 		// b.executeForm(form);
 		std::cout << "________________________\n" << std::endl;
-		std::cout << jack.makeForm("robotomy request", "Jack") << std::endl;
-		std::cout << jack.makeForm("shrubbery creation", "Jean") << std::endl;
-		std::cout << jack.makeForm("presidential pardon", "Jacko") << std::endl;
-		std::cout << jack.makeForm("robotomy reques", "Raté") << std::endl;
+		delete jack.makeForm("robotomy request", "Jack");
+		delete jack.makeForm("shrubbery creation", "Jean");
+		delete jack.makeForm("presidential pardon", "Jacko");
+		jack.makeForm("robotomy reques", "Raté");
 		std::cout << "________________________\n" << std::endl;
 	} catch (const AForm::GradeTooHighException& e) {
 		std::cerr << e.what() << std::endl;
