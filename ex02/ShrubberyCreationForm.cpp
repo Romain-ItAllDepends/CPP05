@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:38 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/27 14:41:19 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/27 15:08:52 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,9 @@ void	ShrubberyCreationForm::executeFormIn(void) const {
 }
 
 std::ostream &operator<<(std::ostream& out, const ShrubberyCreationForm& a) {
-	out << a.getName() << ", ShrubberyCreationForm signed grade " << a.getGradeSign();
-	out << ", ShrubberyCreationForm execute grade " << a.getGradeExecutive() << ".";
+	out << a.getName() << ", signed grade " << a.getGradeSign();
+	out << ", execute grade " << a.getGradeExecutive() << "." << std::endl;
+	out << "Is signed ? " << a.getSigned() << std::endl;
+	out << "Target: " << a.getTarget() << std::endl;
     return (out);
 }

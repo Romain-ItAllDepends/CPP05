@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:26 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/27 14:39:34 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/27 15:08:36 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ void	PresidentialPardonForm::executeFormIn(void) const {
 }
 
 std::ostream &operator<<(std::ostream& out, const PresidentialPardonForm& a) {
-	out << a.getName() << ", PresidentialPardonForm signed grade " << a.getGradeSign();
-	out << ", PresidentialPardonForm execute grade " << a.getGradeExecutive() << ".";
+	out << a.getName() << ", signed grade " << a.getGradeSign();
+	out << ", execute grade " << a.getGradeExecutive() << "." << std::endl;
+	out << "Is signed ? " << a.getSigned() << std::endl;
+	out << "Target: " << a.getTarget() << std::endl;
     return (out);
 }

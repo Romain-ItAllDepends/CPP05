@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:02:45 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/27 15:02:52 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/27 15:05:03 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	main(void) {
 		std::cout << "________________________\n" << std::endl;
 		std::cout << p << std::endl; // Custom ShrubberyCreationForm
 		std::cout << b << std::endl;
-		p.beSigned(b); // Sign all and exec
-		// r.beSigned(b);
+		p.beSigned(b); // Don't comment this one
+		// r.beSigned(b); // Sign all and exec
 		// s.beSigned(b);
 		// b.executeForm(p);
 		// b.executeForm(r);
