@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:33 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/09 08:48:54 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/27 15:08:49 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,35 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
-RobotomyRequestForm::RobotomyRequestForm(void):AForm("random", false, 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(void):AForm("random", false, 72, 45), _target("default") {
 	std::cout << "The standart RobotomyRequestForm " << this->getName() << " has been created!" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string name):AForm(name, false, 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target):AForm("RobotomyRequestForm", false, 72, 45), _target(target) {
 	std::cout << "The RobotomyRequestForm " << this->getName() << " has been created!" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj):AForm(obj.getName(),
-	obj.getSigned(), obj.getGradeSign(), obj.getGradeExecutive()) {
+	obj.getSigned(), obj.getGradeSign(), obj.getGradeExecutive()), _target(obj._target) {
 	*this = obj;
 	std::cout << "The RobotomyRequestForm " << this->getName() << " has been copied!" << std::endl;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &obj) {
 	std::cout << "The RobotomyRequestForm " << this->getName() << " has been copied by assignment!" << std::endl;
-	if (this != &obj)
+	if (this != &obj) {
 		this->setSigned(obj.getSigned());
+		_target = obj._target;
+	}
 	return (*this);
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(void) {
 	std::cout << "The RobotomyRequestForm " << this->getName() << " has been destroyed!" << std::endl;
+}
+
+const std::string	RobotomyRequestForm::getTarget(void) const {
+	return (_target);
 }
 
 void	RobotomyRequestForm::beSigned(const Bureaucrat &p) {
@@ -46,18 +52,18 @@ void	RobotomyRequestForm::beSigned(const Bureaucrat &p) {
 		throw AForm::GradeTooLowException();
 }
 
-void	RobotomyRequestForm::executeFormIn(const Bureaucrat worker) const {
-	std::cout << worker.getName() << " executed " << this->getName() << std::endl;
+void	RobotomyRequestForm::executeFormIn(void) const {
 	std::cout << "Vrrrrrrrrrrrrrrrrrrrrr!" << std::endl;
-	srand (time(NULL));	
 	if (rand() % 2)
-		std::cout << this->getName() <<  " has been robotomized." << std::endl;
+		std::cout << this->getTarget() <<  " has been robotomized." << std::endl;
 	else
 		std::cout << "Robotomy failed." << std::endl;
 }
 
 std::ostream &operator<<(std::ostream& out, const RobotomyRequestForm& a) {
-	out << a.getName() << ", RobotomyRequestForm signed grade " << a.getGradeSign();
-	out << ", RobotomyRequestForm execute grade " << a.getGradeExecutive() << ".";
+	out << a.getName() << ", signed grade " << a.getGradeSign();
+	out << ", execute grade " << a.getGradeExecutive() << "." << std::endl;
+	out << "Is signed ? " << a.getSigned() << std::endl;
+	out << "Target: " << a.getTarget() << std::endl;
     return (out);
 }

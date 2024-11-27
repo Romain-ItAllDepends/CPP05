@@ -6,40 +6,42 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:38 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/09 08:46:29 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/27 15:08:52 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string name, const bool sign, const int gradeSign, const int gradeExec):AForm(name, sign, gradeSign, gradeExec) {
-	std::cout << "The custom ShrubberyCreationForm " << this->getName() << " has been created!" << std::endl;
-}
-
-ShrubberyCreationForm::ShrubberyCreationForm(void):AForm("random", false, 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(void):AForm("random", false, 145, 137), _target("default") {
 	std::cout << "The standart ShrubberyCreationForm " << this->getName() << " has been created!" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string name):AForm(name, false, 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target):AForm("ShrubberyCreationForm", false, 145, 137), _target(target) {
 	std::cout << "The ShrubberyCreationForm " << this->getName() << " has been created!" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj):AForm(obj.getName(),
-	obj.getGradeSign(), obj.getGradeSign(), obj.getGradeExecutive()) {
+	obj.getGradeSign(), obj.getGradeSign(), obj.getGradeExecutive()), _target(obj._target) {
 	*this = obj;
 	std::cout << "The ShrubberyCreationForm " << this->getName() << " has been copied!" << std::endl;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj) {
 	std::cout << "The ShrubberyCreationForm " << this->getName() << " has been copied by assignment!" << std::endl;
-	if (this != &obj)
+	if (this != &obj) {
 		this->setSigned(obj.getSigned());
+		_target = obj._target;
+	}
 	return (*this);
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 	std::cout << "The ShrubberyCreationForm " << this->getName() << " has been destroyed!" << std::endl;
+}
+
+const std::string	ShrubberyCreationForm::getTarget(void) const {
+	return (_target);
 }
 
 void	ShrubberyCreationForm::beSigned(const Bureaucrat &p) {
@@ -49,12 +51,11 @@ void	ShrubberyCreationForm::beSigned(const Bureaucrat &p) {
 		throw AForm::GradeTooLowException();
 }
 
-void	ShrubberyCreationForm::executeFormIn(const Bureaucrat worker) const {
+void	ShrubberyCreationForm::executeFormIn(void) const {
 	std::ofstream	outfile;
-	std::string		name = this->getName();
+	std::string		name = this->getTarget();
 
 	const_cast<std::string&>(name).append("_shrubbery");
-	std::cout << worker.getName() << " executed " << this->getName() << std::endl;
 	outfile.open(name.c_str(), std::ofstream::app);
 	outfile << "                        .__ ._       \\_.                                                            .__ ._       \\_." << std::endl;
 	outfile << "                 _, _.  '  \\/   \\.-  /                                                      _, _.  '  \\/   \\.-  /" << std::endl;
@@ -95,7 +96,9 @@ void	ShrubberyCreationForm::executeFormIn(const Bureaucrat worker) const {
 }
 
 std::ostream &operator<<(std::ostream& out, const ShrubberyCreationForm& a) {
-	out << a.getName() << ", ShrubberyCreationForm signed grade " << a.getGradeSign();
-	out << ", ShrubberyCreationForm execute grade " << a.getGradeExecutive() << ".";
+	out << a.getName() << ", signed grade " << a.getGradeSign();
+	out << ", execute grade " << a.getGradeExecutive() << "." << std::endl;
+	out << "Is signed ? " << a.getSigned() << std::endl;
+	out << "Target: " << a.getTarget() << std::endl;
     return (out);
 }

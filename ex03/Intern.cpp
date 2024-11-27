@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:11:08 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/09 10:09:50 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/27 15:17:08 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ AForm	*Intern::makeForm(std::string name, std::string target) {
 		i++;
 	switch (i) {
 		case PresidentPardon:
-			std::cout << "Intern creates" << target << std::endl;
+			std::cout << "Intern creates " << target << std::endl;
 			return (new PresidentialPardonForm(target));
 		case RobotomyRequest:
-			std::cout << "Intern creates" << target << std::endl;
+			std::cout << "Intern creates " << target << std::endl;
 			return (new RobotomyRequestForm(target));
 		case ShrubberyCreation:
-			std::cout << "Intern creates" << target << std::endl;
+			std::cout << "Intern creates " << target << std::endl;
 			return (new ShrubberyCreationForm(target));
 		default:
 			std::cerr << "Doesn't exist." << std::endl;
