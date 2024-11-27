@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 09:25:55 by rgobet            #+#    #+#             */
-/*   Updated: 2024/10/22 11:41:05 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/25 12:05:57 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Bureaucrat {
 		int					_grade;
 	public:
 		Bureaucrat(void);
-		Bureaucrat(const std::string name);
+		Bureaucrat(const std::string &name, const int &grade);
 		Bureaucrat(const Bureaucrat &obj);
 		Bureaucrat	&operator=(const Bureaucrat &obj);
 		~Bureaucrat(void);

@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 09:25:58 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 15:56:46 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/25 14:49:11 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ Bureaucrat::Bureaucrat(void):_name("L'idiot du village"), _grade(150) {
 	std::cout << "Recruitment of a new standard Bureaucrat named " << _name << "." << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name):_name(name), _grade(150) {
+Bureaucrat::Bureaucrat(const std::string &name, const int &grade):_name(name) {
+	if (grade > 150)
+		throw GradeTooLowException();
+	if (grade < 1)
+		throw GradeTooHighException();
+	_grade = grade;
 	std::cout << "Recruitment of a new Bureaucrat named " << _name << "." << std::endl;
-}
-
-Bureaucrat::Bureaucrat(const std::string name, const int grade):_name(name), _grade(grade) {
-	std::cout << "Recruitment of a new custom Bureaucrat named " << _name << "." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj):_name(obj._name), _grade(obj._grade) {

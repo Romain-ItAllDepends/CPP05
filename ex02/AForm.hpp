@@ -26,7 +26,7 @@ class AForm {
 		const int			_gradeExecutive;
 	public:
 		AForm(void);
-		AForm(const std::string name);
+		AForm(const std::string &name, const int &gradeSign, const int &gradeExecutive);
 		AForm(const std::string name, const bool sign, const int gradeSign, const int gradeExec);
 		AForm(const AForm &obj);
 		AForm &operator=(const AForm &obj);
@@ -39,11 +39,30 @@ class AForm {
 
 		void				setSigned(const bool sign);
 
-		virtual void		beSigned(const Bureaucrat &p) = 0;
-		void				execute(Bureaucrat const & executor) const;
+		void			beSigned(const Bureaucrat &p);
+		void			execute(Bureaucrat const & executor) const;
+		virtual void	executeFormIn(void) const = 0;
 
-		virtual void		executeFormIn(const Bureaucrat worker) const = 0;
-
+		class AlreadySignedException: public std::exception {
+			private:
+				std::string			_result;
+				const std::string	_bName;
+				const std::string	_fName;
+			public:
+				AlreadySignedException(const std::string &bName, const std::string &fName);
+				virtual ~AlreadySignedException(void) throw();
+				virtual const char* what() const throw();
+		};
+		class NotSignedException: public std::exception {
+			private:
+				std::string			_result;
+				const std::string	_bName;
+				const std::string	_fName;
+			public:
+				NotSignedException(const std::string &bName, const std::string &fName);
+				virtual ~NotSignedException(void) throw();
+				virtual const char* what() const throw();
+		};
 		class GradeTooHighException: public std::exception {
 			public:
 				virtual const char* what() const throw();

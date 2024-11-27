@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 09:25:58 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 15:25:38 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/27 12:29:25 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@ Bureaucrat::Bureaucrat(void):_name("L'idiot du village"), _grade(150) {
 	std::cout << "Recruitment of a new standard Bureaucrat named " << _name << "." << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name):_name(name), _grade(150) {
+Bureaucrat::Bureaucrat(const std::string &name, const int &grade):_name(name) {
+	if (grade > 150)
+		throw GradeTooLowException();
+	if (grade < 1)
+		throw GradeTooHighException();
+	_grade = grade;
 	std::cout << "Recruitment of a new Bureaucrat named " << _name << "." << std::endl;
 }
 
@@ -55,22 +60,44 @@ void	Bureaucrat::setGrade(int grade) {
 void	Bureaucrat::incrementGrade(void) {
 	if (_grade == 1)
 		throw GradeTooHighException();
-	_grade--;
+	--_grade;
 }
 
 void	Bureaucrat::decrementGrade(void) {
 	if (_grade == 150)
 		throw GradeTooLowException();
-	_grade++;
+	++_grade;
 }
 
-void	Bureaucrat::signForm(const Form f) {
+Bureaucrat::AlreadySignedException::AlreadySignedException(
+	const std::string &bName, const std::string &fName):_bName(bName), _fName(fName) {
+	_result = _bName + " couldn't sign " + _fName + " because already signed.";
+}
+
+Bureaucrat::GradeTooLowSignException::GradeTooLowSignException(
+	const std::string &bName, const std::string &fName):_bName(bName), _fName(fName) {
+	_result = std::string(_bName) + " couldn't sign " + std::string(_fName) + " because too low grade.";
+}
+
+Bureaucrat::AlreadySignedException::~AlreadySignedException(void) throw() {}
+
+Bureaucrat::GradeTooLowSignException::~GradeTooLowSignException(void) throw() {}
+
+const char *Bureaucrat::AlreadySignedException::what() const throw() {
+	return (_result.c_str());
+}
+
+void	Bureaucrat::signForm(const Form &f) {
 	if (f.getSigned() == 0 && f.getGradeSign() >= _grade)
 		std::cout << _name << " signed " << f.getName() << std::endl;
 	else if (f.getSigned() == 0 && f.getGradeSign() < _grade)
-		std::cout << _name << " couldn't sign " << f.getName() << " because too low grade." << std::endl;
+		throw GradeTooLowSignException(_name, f.getName());
 	else
-		std::cout << _name << " couldn't sign " << f.getName() << " because already signed." << std::endl;
+		throw AlreadySignedException(_name, f.getName());
+}
+
+const char* Bureaucrat::GradeTooLowSignException::what() const throw() {
+	return (_result.c_str());
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {

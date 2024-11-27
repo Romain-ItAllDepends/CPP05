@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:30 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/09 08:45:44 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/27 14:49:32 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,20 @@
 class Bureaucrat;
 
 class PresidentialPardonForm: public AForm {
+	private:
+		std::string	_target;
 	public:
 		PresidentialPardonForm(void);
-		PresidentialPardonForm(const std::string name);
+		PresidentialPardonForm(const std::string &target);
 		PresidentialPardonForm(const PresidentialPardonForm &obj);
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &obj);
-		~PresidentialPardonForm(void);
-
-		void	executeFormIn(const Bureaucrat worker) const;
+		virtual ~PresidentialPardonForm(void);
 
 		void	beSigned(const Bureaucrat &p);
+		void	executeFormIn(void) const;
+
+		const std::string	getTarget(void) const;
+
 };
 
 std::ostream &operator<<(std::ostream& out, const PresidentialPardonForm& a);

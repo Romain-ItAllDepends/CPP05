@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:48:42 by rgobet            #+#    #+#             */
-/*   Updated: 2024/11/08 09:14:29 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/11/27 11:21:58 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Form {
 		const int			_gradeExecutive;
 	public:
 		Form(void);
-		Form(const std::string name);
+		Form(const std::string &name, const int &gradeSign, const int &gradeExecutive);
 		Form(const Form &obj);
 		Form &operator=(const Form &obj);
 		~Form(void);
@@ -38,8 +38,18 @@ class Form {
 
 		void	setSigned(const bool sign);
 
-		Form	beSigned(const Bureaucrat &p);
+		void	beSigned(const Bureaucrat &p);
 
+		class AlreadySignedException: public std::exception {
+			private:
+				std::string			_result;
+				const std::string	_bName;
+				const std::string	_fName;
+			public:
+				AlreadySignedException(const std::string &bName, const std::string &fName);
+				virtual ~AlreadySignedException(void) throw();
+				virtual const char* what() const throw();
+		};
 		class GradeTooHighException: public std::exception {
 			public:
 				virtual const char* what() const throw();

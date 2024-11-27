@@ -16,7 +16,11 @@ AForm::AForm(void):_name("random"), _signed(false), _gradeSign(150), _gradeExecu
 	std::cout << "The standart AForm " << _name << " has been created!" << std::endl;
 }
 
-AForm::AForm(const std::string name):_name(name), _signed(false), _gradeSign(150), _gradeExecutive(149) {
+AForm::AForm(const std::string &name, const int &gradeSign, const int &gradeExecutive):_name(name), _signed(0), _gradeSign(gradeSign), _gradeExecutive(gradeExecutive) {
+	if (gradeSign > 150 || gradeExecutive > 150)
+		throw GradeTooLowException();
+	if (gradeSign < 1 || gradeExecutive < 1)
+		throw GradeTooHighException();
 	std::cout << "The AForm " << _name << " has been created!" << std::endl;
 }
 
@@ -40,6 +44,28 @@ AForm &AForm::operator=(const AForm &obj) {
 
 AForm::~AForm(void) {
 	std::cout << "The AForm " << _name << " has been destroyed!" << std::endl;
+}
+
+AForm::AlreadySignedException::AlreadySignedException(
+	const std::string &bName, const std::string &fName):_bName(bName), _fName(fName) {
+	_result = _bName + " couldn't sign " + _fName + " because already signed.";
+}
+
+AForm::NotSignedException::NotSignedException(
+	const std::string &bName, const std::string &fName):_bName(bName), _fName(fName) {
+	_result = std::string(_bName) + " couldn't execute " + std::string(_fName) + " because form is not signed.";
+}
+
+AForm::NotSignedException::~NotSignedException(void) throw() {}
+
+AForm::AlreadySignedException::~AlreadySignedException(void) throw() {}
+
+const char *AForm::AlreadySignedException::what() const throw() {
+	return (_result.c_str());
+}
+
+const char* AForm::NotSignedException::what() const throw() {
+	return (_result.c_str());
 }
 
 const std::string	AForm::getName(void) const {
@@ -66,7 +92,7 @@ void	AForm::beSigned(const Bureaucrat &p) {
 	if (_signed == 0 && p.getGrade() <= _gradeSign)
 		_signed = 1;
 	else if (_signed == 1)
-		std::cout << "Already signed." << std::endl;
+		throw AForm::AlreadySignedException(p.getName(), _name);
 	else if (p.getGrade() > _gradeSign)
 		throw AForm::GradeTooLowException();
 }
@@ -75,7 +101,7 @@ void	AForm::execute(Bureaucrat const & executor) const {
 	if (executor.getGrade() > _gradeExecutive)
 		throw AForm::GradeTooLowException();
 	else if (_signed == false)
-		std::cout << "Form is not signed!" << std::endl;
+		throw AForm::NotSignedException(executor.getName(), _name);
 	else
 		std::cout << "The Form " << _name << " has been execute!" << std::endl;
 }
